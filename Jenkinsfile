@@ -3,7 +3,10 @@ pipeline {
     stages {
         stage('---clean---') {
             steps {
-                sh "mvn clean"
+                 sh "rm -rf my-app"
+                 sh "git clone https://github.com/pknowledge/my-app.git/"
+                 sh "mvn clean -f my-app"
+                 sh "mvn compile -f my-app"
             }
         }
         stage('--test--') {
